@@ -1,0 +1,34 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Shop by lev
+{% endblock %}
+
+{% block body %}
+<h1>Base window</h1>
+<div>
+    {% now l as current_weekday %}
+    Now is {{ current_weekday }} {% now 'H:i' %}
+</div>
+
+<div>
+    <ul>
+        {% for name, price in products %}
+            <li> {{ name }}'s ({{ name|length }}) price is {{ price }}</li>
+            {% if name|length_is:'7' %}
+            <span>Here is lucky product!</span>
+            {% endif %}
+            {% empty %}
+            No products here yet
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+    Time online: {{ time_running }} seconds
+</div>
+
+<div>
+    {% lorem 3 p random %}
+</div>
+{% endblock%}

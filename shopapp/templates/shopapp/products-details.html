@@ -1,0 +1,36 @@
+{% extends 'shopapp/base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+{% translate 'Product #{{ product.pk }}' %}
+{% endblock %}
+
+
+{% block body %}
+<h1>{% translate 'Product'%}: <strong>{{ product.name }}</strong></h1>
+<div>
+    <div>{% translate 'Price' %}: {{ product.price }}$</div>
+    <br>
+    <div>{% translate 'Discount' %}: {{ product.discount }}%</div>
+    <br>
+    {% if product.description %}
+    <div>{% translate 'Description' %}: <em>{{ product.description }}</em></div>
+    {% else %}
+    <div>{% translate 'Description' %}: <em>{% translate 'no description' %}</em></div>
+    {% endif %}
+    <br>
+    <div>{% translate 'Archived' %}: {{ product.archived }}
+</div>
+</div>
+{% if product.preview %}
+<img src="{{product.preview.url}}" alt="{{product.preview.name}}">
+{% endif %}
+<div>
+    <a href="{% url 'shopapp:product_delete' pk=product.pk%}">{% translate 'Delete product' %}</a>
+    <br>
+    <a href="{% url 'shopapp:product_update' pk=product.pk %}">{% translate 'Update product' %}</a>
+    <br>
+    <a href="{% url 'shopapp:products_list' %}">{% translate 'Get back to products' %}</a>
+</div>
+{% endblock %}

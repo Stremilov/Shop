@@ -1,0 +1,1 @@
+[{"model": "shopapp.order", "pk": 1, "fields": {"delivery_adress": "Main street, h.8", "promocode": "shop322", "created_time": "2023-07-29T12:58:30.908Z", "user": 1, "products": [1, 2]}}]
