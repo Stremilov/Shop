@@ -1,0 +1,17 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+Users
+{% endblock %}
+
+{% block body %}
+<h1>Users:</h1>
+<ul>
+    {% for cur_user in users_list %}
+    <li>
+        <p><a href="{% url 'myauth:about-user-pk' pk=cur_user.pk%}">User_#{{ cur_user.pk }}</a></p>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

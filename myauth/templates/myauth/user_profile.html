@@ -1,0 +1,22 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+User Profile
+{% endblock %}
+
+{% block body %}
+<h1>Profile {{ user.username }}</h1>
+{% if user.avatar %}
+<img src="user.preview.url" alt="user.preview.name">
+{% else %}
+<h2>No avatar yet</h2>
+{% endif %}
+{% if user.is_authenticated %}
+<p>Username: {{ user.username }}</p>
+<p>First name: {{ user.first_name }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Bio: {{ user.bio }}</p>
+{% else %}
+<h2>User is anonymous</h2>
+{% endif %}
+{% endblock %}
